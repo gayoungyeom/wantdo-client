@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
     *{
         box-sizing:border-box;
     }
+    body{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 `;
 
 export default GlobalStyles;
