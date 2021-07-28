@@ -6,7 +6,7 @@ import DefaultBean from '../assets/defaultBean.jpg';
 
 const BeanItem = ({ no, imgUrl, name, cafe }) => {
   return (
-    <Link to={'/detail'}>
+    <Link to={`/detail/${no}`}>
       <Container>
         <Image bgUrl={imgUrl || DefaultBean} />
         <Name>{name}</Name>

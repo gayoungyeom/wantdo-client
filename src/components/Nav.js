@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { getData } from '../utils/http';
 
-const Nav = ({ cafes }) => {
+const Nav = () => {
+  const [cafeList, setCafeList] = useState([]);
+
+  const getAllCafes = useCallback(() => {
+    getData(`/bean/getallcafes`, (res) => {
+      setCafeList(res.results);
+    });
+  }, []);
+
+  useEffect(() => {
+    getAllCafes();
+  }, [getAllCafes]);
+
   return (
     <Container>
       <NavList>
-        <NavItem>
-          <Btn>스타벅스</Btn>
-        </NavItem>
-        <NavItem>
-          <Btn>투썸플레이스</Btn>
-        </NavItem>
-        <NavItem>
-          <Btn>이디야</Btn>
-        </NavItem>
-        <NavItem>
-          <Btn>폴바셋</Btn>
-        </NavItem>
+        {cafeList &&
+          cafeList.map((cafe) => (
+            <NavItem key={cafe.no}>
+              <Btn>{cafe.name}</Btn>
+            </NavItem>
+          ))}
       </NavList>
     </Container>
   );
@@ -36,7 +43,7 @@ Nav.defaultProps = {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  width: 1140px;
+  max-width: 1140px;
   height: 60px;
   margin: 0 auto;
 `;
