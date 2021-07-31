@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getData } from '../utils/http';
+import { main } from '../utils/color';
 
-const Nav = () => {
+const Nav = ({}) => {
   const [cafeList, setCafeList] = useState([]);
+  const [curNav, setCurNav] = useState('전체');
 
   const getAllCafes = useCallback(() => {
     getData(`/bean/getallcafes`, (res) => {
@@ -16,13 +18,24 @@ const Nav = () => {
     getAllCafes();
   }, [getAllCafes]);
 
+  const onClickNav = useCallback((e) => {
+    setCurNav(e.target.value);
+  }, []);
+
   return (
     <Container>
       <NavList>
+        <NavItem current={curNav === '전체'}>
+          <Btn value='전체' onClick={onClickNav}>
+            전체
+          </Btn>
+        </NavItem>
         {cafeList &&
           cafeList.map((cafe) => (
-            <NavItem key={cafe.no}>
-              <Btn>{cafe.name}</Btn>
+            <NavItem key={cafe.no} current={curNav === cafe.name}>
+              <Btn value={cafe.name} onClick={onClickNav}>
+                {cafe.name}
+              </Btn>
             </NavItem>
           ))}
       </NavList>
@@ -54,13 +67,23 @@ const NavList = styled.ul`
   width: 100%;
 `;
 
-const NavItem = styled.li``;
+const NavItem = styled.li`
+  border-bottom: ${(props) => props.current && `3px solid ${main}`};
+  transition: s-bottom 1.5s ease-in-out;
+`;
 
 const Btn = styled.button`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   padding: 10px;
-  background: #fff;
+  color: inherit;
+  background: none;
   border: none;
   cursor: pointer;
+  &:hover {
+    font-weight: 700;
+  }
+  &:focus {
+    font-weight: 700;
+  }
 `;

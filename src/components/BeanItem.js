@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import DefaultBean from '../assets/defaultBean.jpg';
+import { main, sub, text } from '../utils/color';
 
 const BeanItem = ({ no, imgUrl, name, cafe }) => {
   return (
@@ -38,16 +39,24 @@ const Container = styled.div`
   align-items: center;
   width: 262.5px;
   height: 346.5px;
-  border: 2px solid #000;
-  border-radius: 4px;
+  color: ${text};
+  background: ${sub};
+  border-radius: 10px;
   cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 const Image = styled.div`
-  width: 100%;
-  height: 262.5px;
+  width: 95%;
+  height: 260px;
+  margin-top: 5px;
   background: url(${(props) => props.bgUrl}) no-repeat center;
   background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  /* border-radius: 100%; */
 `;
 
 const Name = styled.div`
@@ -56,6 +65,8 @@ const Name = styled.div`
   padding: 10px;
   text-align: center;
   font-weight: bold;
+  font-size: 17px;
+  margin-top: 5px;
 `;
 
 const Cafe = styled.div`
@@ -64,4 +75,5 @@ const Cafe = styled.div`
   padding: 10px;
   text-align: center;
   font-weight: bold;
+  font-size: 14px;
 `;
