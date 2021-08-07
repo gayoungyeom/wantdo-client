@@ -36,7 +36,7 @@ const Detail = ({ match }) => {
       <Container>
         <TopInfo>
           <ImgWrap>
-            <Image imgUrl={bean.image} />
+            <Image imgUrl={bean.image || DefaultBean} />
           </ImgWrap>
           <MainInfo>
             <NameConatiner>
