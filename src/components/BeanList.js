@@ -17,7 +17,6 @@ BeanList.defaultProps = {
 };
 
 const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 262.5px);
-  grid-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
 `;

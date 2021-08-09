@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const devUrl = `http://localhost:4000`;
-const pubUrl = ``;
+const pubUrl = process.env.PUBLIC_URL;
 
 const url = () => {
   return devUrl;

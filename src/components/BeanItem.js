@@ -8,16 +8,14 @@ import { cafeLogos, cafeColors } from '../utils/brand';
 
 const BeanItem = ({ no, imgUrl, name, cafe, cafeNo }) => {
   return (
-    <Link to={`/detail/${no}`}>
-      <Container>
-        <Image bgUrl={imgUrl || DefaultBean} />
-        <Name>{name}</Name>
-        <Wrap>
-          <Logo src={cafeLogos[cafeNo - 1]} />
-          <Cafe no={cafeNo}>{cafe}</Cafe>
-        </Wrap>
-      </Container>
-    </Link>
+    <Container to={`/detail/${no}`}>
+      <Image bgUrl={imgUrl || DefaultBean} />
+      <Name>{name}</Name>
+      <Wrap>
+        <Logo src={cafeLogos[cafeNo - 1]} />
+        <Cafe no={cafeNo}>{cafe}</Cafe>
+      </Wrap>
+    </Container>
   );
 };
 
@@ -39,9 +37,10 @@ BeanItem.defaultProps = {
   cafeNo: 0,
 };
 
-const Container = styled.div`
+const Container = styled(Link)`
   display: flex;
   flex-direction: column;
+  margin: 0.75rem;
   align-items: center;
   width: 262.5px;
   height: 346.5px;
@@ -52,6 +51,9 @@ const Container = styled.div`
   &:hover {
     opacity: 0.6;
   }
+  /* @media (max-width: 1212px) {
+    width: calc(50% - 2rem);
+  } */
 `;
 
 const Image = styled.div`
