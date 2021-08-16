@@ -4,7 +4,7 @@ const devUrl = `http://localhost:4000`;
 const pubUrl = process.env.PUBLIC_URL;
 
 const url = () => {
-  return devUrl;
+  return pubUrl;
 };
 
 const isError = (e) => {

@@ -42,7 +42,8 @@ const Container = styled(Link)`
   flex-direction: column;
   margin: 0.75rem;
   align-items: center;
-  width: 262.5px;
+  width: 16.2rem;
+  /* width: 262.5px; */
   height: 346.5px;
   color: ${text};
   background: ${sub};
@@ -51,9 +52,15 @@ const Container = styled(Link)`
   &:hover {
     opacity: 0.6;
   }
-  /* @media (max-width: 1212px) {
+  @media (max-width: 1200px) {
+    width: calc(33% - 2rem);
+  }
+  @media (max-width: 900px) {
     width: calc(50% - 2rem);
-  } */
+  }
+  @media (max-width: 450px) {
+    width: calc(100% - 2rem);
+  }
 `;
 
 const Image = styled.div`
@@ -68,7 +75,7 @@ const Image = styled.div`
 `;
 
 const Name = styled.div`
-  width: inherit;
+  width: 80%;
   height: 42px;
   padding: 10px;
   text-align: center;
