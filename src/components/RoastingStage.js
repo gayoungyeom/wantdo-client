@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { main, sub } from '../utils/color';
 
-const RoastingStage = ({ curItem }) => {
+const RoastingStage = ({ curItem, isClickInfo }) => {
   return (
-    <Container>
+    <Container isClickInfo={isClickInfo}>
       <Wrap>
         <Item current={curItem === '라이트'}>라이트</Item>
         <Item current={curItem === '시나몬'}>시나몬</Item>
@@ -25,7 +25,9 @@ const RoastingStage = ({ curItem }) => {
 
 export default RoastingStage;
 
-const Container = styled.div``;
+const Container = styled.div`
+  opacity: ${(props) => props.isClickInfo && 0.5};
+`;
 
 const Wrap = styled.div`
   border: 2px solid ${main};

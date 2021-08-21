@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const devUrl = `http://localhost:4000`;
-const pubUrl = process.env.PUBLIC_URL;
+const pubUrl = `http://ec2-3-35-217-154.ap-northeast-2.compute.amazonaws.com:3000`;
 
 const url = () => {
   return pubUrl;
