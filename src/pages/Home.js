@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
@@ -61,6 +62,9 @@ const Home = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{`WANTDO | ${curNav}`}</title>
+      </Helmet>
       <NavContainer>
         <NavList>
           <NavItem current={curNav === '전체'}>

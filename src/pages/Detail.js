@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+// import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import { getData } from '../utils/http';
 
 import Layout from '../components/Layout';
 import RoastingStage from '../components/RoastingStage';
-import { main, sub, text } from '../utils/color';
+import { main, sub } from '../utils/color';
 import DefaultBean from '../assets/defaultBean.jpg';
 import TasteIcon from '../assets/taste.svg';
 import TypeIcon from '../assets/type.svg';
@@ -39,6 +41,9 @@ const Detail = ({ match }) => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{`WANTDO | ${bean.name}`}</title>
+      </Helmet>
       <Container>
         <TopInfo>
           <ImgWrap>
@@ -57,7 +62,7 @@ const Detail = ({ match }) => {
                 <Label>Tastes</Label>
               </LabelWrap>
               {tastes &&
-                tastes.map((taste) => <Tastes key={taste.no}>{taste}</Tastes>)}
+                tastes.map((taste, idx) => <Tastes key={idx}>{taste}</Tastes>)}
             </TasteContainer>
             <Wrap>
               <TypeContainer>
@@ -73,8 +78,8 @@ const Detail = ({ match }) => {
                   <Label>Origins</Label>
                 </LabelWrap>
                 {origins &&
-                  origins.map((origin) => (
-                    <Origins key={origin.no}>{origin}</Origins>
+                  origins.map((origin, idx) => (
+                    <Origins key={idx}>{origin}</Origins>
                   ))}
               </OriginContainer>
             </Wrap>
@@ -181,7 +186,7 @@ const Name = styled.div`
   font-weight: bold;
 `;
 
-const More = styled(Link)``;
+// const More = styled(Link)``;
 
 const TasteContainer = styled.div``;
 

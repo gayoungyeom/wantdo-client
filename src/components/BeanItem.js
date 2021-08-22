@@ -10,9 +10,9 @@ const BeanItem = ({ no, imgUrl, name, cafe, cafeNo }) => {
   return (
     <Container to={`/detail/${no}`}>
       <Image bgUrl={imgUrl || DefaultBean} />
+      <Logo src={cafeLogos[cafeNo - 1]} />
       <Name>{name}</Name>
       <Wrap>
-        <Logo src={cafeLogos[cafeNo - 1]} />
         <Cafe no={cafeNo}>{cafe}</Cafe>
       </Wrap>
     </Container>
@@ -39,6 +39,7 @@ BeanItem.defaultProps = {
 
 const Container = styled(Link)`
   display: flex;
+  position: relative;
   flex-direction: column;
   margin: 0.75rem;
   align-items: center;
@@ -93,6 +94,9 @@ const Wrap = styled.div`
 const Logo = styled.img`
   width: 20px;
   height: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 `;
 
 const Cafe = styled.div`
